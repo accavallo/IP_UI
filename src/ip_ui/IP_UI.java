@@ -16,6 +16,18 @@ public class IP_UI extends javax.swing.JFrame {
      */
     public IP_UI() {
         initComponents();
+        winPingT.setToolTipText("<html>Pings the specified host until stopped.<br />To see statistics and continue - Type Control-Break;<br />This cannot be selected in conjunction with -n.</html>");
+        winPingN.setToolTipText("<html>Number of echo requests to send.<br />This cannot be used in conjunction with -t.</html>");
+        winNSpinner.setToolTipText("<html>Any number between 1 and 100.<br />Limited to 100 for reasons.</html>");
+        winPingLowerR.setToolTipText("<html>Record route for count hops (IPv4-only).</html>");
+        winPingA.setToolTipText("<html></html>");
+        winPingI.setToolTipText("<html>Time To Live (in milliseconds).</html>");
+        winISpinner.setToolTipText("<html>Any number between 1 and 1024.<br />Limited to 1024 for reasons.</html>");
+        winPingW.setToolTipText("<html>Timeout in milliseconds to wait for each reply.</html>");
+        winWSpinner.setToolTipText("<html>Any number between 1 and 1024.<br />Limited to 1024 for reasons.</html>");
+        
+        
+        // Enter all Linux tooltips here.
     }
 
     private void runSystemCommand(String command)
@@ -34,20 +46,35 @@ public class IP_UI extends javax.swing.JFrame {
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        pingBtn = new javax.swing.JButton();
-        ipConfigBtn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        pingT = new java.awt.Checkbox();
-        pingA = new java.awt.Checkbox();
-        pingN = new java.awt.Checkbox();
-        pingI = new java.awt.Checkbox();
-        nSpinner = new javax.swing.JSpinner();
-        iSpinner = new javax.swing.JSpinner();
-        pingR = new java.awt.Checkbox();
-        pingW = new java.awt.Checkbox();
-        jSpinner1 = new javax.swing.JSpinner();
-        ipAll = new java.awt.Checkbox();
+        LinuxPane = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        winNSpinner = new javax.swing.JSpinner();
+        winISpinner = new javax.swing.JSpinner();
+        winWSpinner = new javax.swing.JSpinner();
+        winPingBtn = new javax.swing.JButton();
+        winIpCfgBtn = new javax.swing.JButton();
+        winIpLabel = new javax.swing.JLabel();
+        windowsTextField = new javax.swing.JTextField();
+        winPingT = new javax.swing.JCheckBox();
+        winPingN = new javax.swing.JCheckBox();
+        winPingLowerR = new javax.swing.JCheckBox();
+        winPingA = new javax.swing.JCheckBox();
+        winPingI = new javax.swing.JCheckBox();
+        winPingW = new javax.swing.JCheckBox();
+        winIpCfgAll = new javax.swing.JCheckBox();
+        winRSpinner = new javax.swing.JSpinner();
+        jPanel2 = new javax.swing.JPanel();
+        linuxTabLabel = new javax.swing.JLabel();
+        linuxPingBtn = new javax.swing.JButton();
+        linuxIpConfigBtn = new javax.swing.JButton();
+        linuxTextField = new javax.swing.JTextField();
+        linuxIpWaitall = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
+        jCheckBox6 = new javax.swing.JCheckBox();
+        jCheckBox7 = new javax.swing.JCheckBox();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -58,44 +85,221 @@ public class IP_UI extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        pingBtn.setText("Ping");
-        pingBtn.addActionListener(new java.awt.event.ActionListener() {
+        winNSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
+        winNSpinner.setValue(1);
+
+        winISpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1024, 1));
+
+        winWSpinner.setModel(new javax.swing.SpinnerNumberModel(56, 1, 1024, 1));
+
+        winPingBtn.setText("Ping");
+        winPingBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pingBtnActionPerformed(evt);
+                winPingBtnActionPerformed(evt);
             }
         });
 
-        ipConfigBtn.setText("IP Config");
+        winIpCfgBtn.setText("IP Config");
 
-        jLabel1.setText("IP Address:");
+        winIpLabel.setText("IP Address:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        winPingT.setText("-t");
+        winPingT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                winPingTActionPerformed(evt);
             }
         });
 
-        pingT.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        pingT.setLabel("-t");
+        winPingN.setText("-n");
+        winPingN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                winPingNActionPerformed(evt);
+            }
+        });
 
-        pingA.setLabel("-a");
+        winPingLowerR.setText("-r");
 
-        pingN.setLabel("-n");
+        winPingA.setText("-a");
 
-        pingI.setLabel("-i");
+        winPingI.setText("-i");
 
-        nSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 100, 1));
-        nSpinner.setValue(1);
+        winPingW.setText("-w");
+        winPingW.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                winPingWActionPerformed(evt);
+            }
+        });
 
-        iSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, 1024, 1));
+        winIpCfgAll.setText("/all");
 
-        pingR.setLabel("-r");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(winPingBtn)
+                            .addComponent(winPingT))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(winIpCfgBtn)
+                            .addComponent(winIpCfgAll)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(winIpLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addComponent(windowsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(winPingA)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(winPingI)
+                        .addGap(18, 18, 18)
+                        .addComponent(winISpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(winPingW)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(winWSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(winPingN)
+                            .addComponent(winPingLowerR))
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(winNSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                            .addComponent(winRSpinner))))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(windowsTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(winIpLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(winPingBtn)
+                    .addComponent(winIpCfgBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(winPingT)
+                    .addComponent(winIpCfgAll))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(winPingN)
+                    .addComponent(winNSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(winPingLowerR)
+                    .addComponent(winRSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(winPingA)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(winPingI)
+                    .addComponent(winISpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(winPingW)
+                    .addComponent(winWSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(215, 215, 215))
+        );
 
-        pingW.setLabel("-w");
+        LinuxPane.addTab("Windows", jPanel1);
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(56, 1, 1024, 1));
+        linuxTabLabel.setText("IP Address:");
 
-        ipAll.setLabel("/all");
+        linuxPingBtn.setText("Ping");
+
+        linuxIpConfigBtn.setText("IP Config");
+
+        linuxTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                linuxTextFieldActionPerformed(evt);
+            }
+        });
+
+        linuxIpWaitall.setText("waitall");
+
+        jCheckBox2.setText("jCheckBox2");
+
+        jCheckBox3.setText("jCheckBox3");
+
+        jCheckBox4.setText("jCheckBox4");
+
+        jCheckBox5.setText("jCheckBox5");
+
+        jCheckBox6.setText("jCheckBox6");
+
+        jCheckBox7.setText("jCheckBox7");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(linuxPingBtn)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(linuxTabLabel)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(linuxTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(linuxIpConfigBtn, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox5, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jCheckBox7)
+                            .addComponent(jCheckBox6))
+                        .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(linuxIpWaitall)
+                        .addGap(59, 59, 59))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(linuxTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(linuxTabLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(linuxPingBtn)
+                    .addComponent(linuxIpConfigBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(linuxIpWaitall)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox2)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox3)
+                .addGap(33, 33, 33)
+                .addComponent(jCheckBox4)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox5)
+                .addGap(27, 27, 27)
+                .addComponent(jCheckBox6)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox7)
+                .addContainerGap(99, Short.MAX_VALUE))
+        );
+
+        LinuxPane.addTab("Linux", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,72 +307,17 @@ public class IP_UI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pingR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pingBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(pingW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(pingT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pingA, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pingI, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(pingN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(nSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(iSpinner, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ipAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ipConfigBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
+                .addComponent(LinuxPane, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(118, 118, 118)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ipConfigBtn)
-                            .addComponent(pingBtn))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pingT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ipAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pingA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pingN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pingI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(iSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pingR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pingW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 244, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(LinuxPane)
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -176,13 +325,31 @@ public class IP_UI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void winPingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winPingBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_winPingBtnActionPerformed
 
-    private void pingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pingBtnActionPerformed
+    private void linuxTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_linuxTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pingBtnActionPerformed
+    }//GEN-LAST:event_linuxTextFieldActionPerformed
+
+    private void winPingTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winPingTActionPerformed
+        if(winPingN.isSelected())
+        {
+            winPingN.setSelected(false);
+        }
+    }//GEN-LAST:event_winPingTActionPerformed
+
+    private void winPingNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winPingNActionPerformed
+        if(winPingT.isSelected())
+        {
+            winPingT.setSelected(false);
+        }
+    }//GEN-LAST:event_winPingNActionPerformed
+
+    private void winPingWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winPingWActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_winPingWActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,22 +387,37 @@ public class IP_UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner iSpinner;
-    private java.awt.Checkbox ipAll;
-    private javax.swing.JButton ipConfigBtn;
+    private javax.swing.JTabbedPane LinuxPane;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
+    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JSpinner nSpinner;
-    private java.awt.Checkbox pingA;
-    private javax.swing.JButton pingBtn;
-    private java.awt.Checkbox pingI;
-    private java.awt.Checkbox pingN;
-    private java.awt.Checkbox pingR;
-    private java.awt.Checkbox pingT;
-    private java.awt.Checkbox pingW;
+    private javax.swing.JButton linuxIpConfigBtn;
+    private javax.swing.JCheckBox linuxIpWaitall;
+    private javax.swing.JButton linuxPingBtn;
+    private javax.swing.JLabel linuxTabLabel;
+    private javax.swing.JTextField linuxTextField;
+    private javax.swing.JSpinner winISpinner;
+    private javax.swing.JCheckBox winIpCfgAll;
+    private javax.swing.JButton winIpCfgBtn;
+    private javax.swing.JLabel winIpLabel;
+    private javax.swing.JSpinner winNSpinner;
+    private javax.swing.JCheckBox winPingA;
+    private javax.swing.JButton winPingBtn;
+    private javax.swing.JCheckBox winPingI;
+    private javax.swing.JCheckBox winPingLowerR;
+    private javax.swing.JCheckBox winPingN;
+    private javax.swing.JCheckBox winPingT;
+    private javax.swing.JCheckBox winPingW;
+    private javax.swing.JSpinner winRSpinner;
+    private javax.swing.JSpinner winWSpinner;
+    private javax.swing.JTextField windowsTextField;
     // End of variables declaration//GEN-END:variables
 }
